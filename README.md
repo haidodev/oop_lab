@@ -6,3 +6,4 @@ This file will descript the process of completing the tasks in the Lab 03:
 5. Create branch "topic/class-members", modify constructor, adding static member.
 6. Craete branch "feature/print-cart", modify toString funciton.
 7. Create branch "feature/search-cart", add toString of DVD.
+8. Branch "topic/store", create Class, and Test.
