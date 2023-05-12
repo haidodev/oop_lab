@@ -67,6 +67,28 @@ public class Cart {
         }
         return cost;
     }
+    public Boolean searchDVD(int id){
+        for (DigitalVideoDisc dvd: itemsOrdered){
+            if (dvd != null && dvd.getId() == id) {
+                System.out.println("Found DVD: ");
+                System.out.println(dvd);
+                return true;
+            }
+        }
+        System.out.println("Not found DVD.");
+        return false;
+    }
+    public Boolean searchDVD(String title){
+        for (DigitalVideoDisc dvd: itemsOrdered){
+            if (dvd != null && title.equals(dvd.getTitle())) {
+                System.out.println("Found DVD: ");
+                System.out.println(dvd);
+                return true;
+            }
+        }
+        System.out.println("Not found DVD.");
+        return false;
+    }
     @Override
     public String toString() {
         String cartString = "";
@@ -75,12 +97,9 @@ public class Cart {
         cartString += cartHeader;
         cartString += cartTitle;
         for (int i = 0; i < qtyOrdered; ++i) {
-            String itemString = String.format("%d. DVD - %s - %s - %d:  %.2f$\n", 
+            String itemString = String.format("%d. %s", 
                 i + 1, 
-                itemsOrdered[i].getTitle(),
-                itemsOrdered[i].getCategory(),
-                itemsOrdered[i].getLength(),
-                itemsOrdered[i].getCost());
+                itemsOrdered[i]);
             cartString += itemString;
         }
         String totalCostString = String.format("Total Cost: %f\n", totalCost());
