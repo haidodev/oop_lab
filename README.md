@@ -4,3 +4,4 @@ This file will descript the process of completing the tasks in the Lab 03:
 3. Create branch "topic/passing-parameter", using Testing class to confirm that Java only pass by value. Create a new swap function to make sure that the new swap function really do what it is desingated to.
 4. In Report.
 5. Create branch "topic/class-members", modify constructor, adding static member.
+6. Craete branch "feature/print-cart", modify toString funciton.

@@ -69,16 +69,48 @@ public class Cart {
     }
     @Override
     public String toString() {
-        String stringOut = "";
-        String qtyOrderedString = String.format("The cart has %d items\n", qtyOrdered);
-        stringOut += qtyOrderedString;
-        for (int i = 0 ; i < qtyOrdered; ++i){
-            String itemString = String.format("Item #%d, Title: %s, Cost: %f\n", i + 1, itemsOrdered[i].getTitle(), itemsOrdered[i].getCost());
-            stringOut += itemString;
+        String cartString = "";
+        String cartHeader = "***********************CART***********************\n";
+        String cartTitle = "Ordered Items: \n";
+        cartString += cartHeader;
+        cartString += cartTitle;
+        for (int i = 0; i < qtyOrdered; ++i) {
+            String itemString = String.format("%d. DVD - %s - %s - %d:  %.2f$\n", 
+                i + 1, 
+                itemsOrdered[i].getTitle(),
+                itemsOrdered[i].getCategory(),
+                itemsOrdered[i].getLength(),
+                itemsOrdered[i].getCost());
+            cartString += itemString;
         }
         String totalCostString = String.format("Total Cost: %f\n", totalCost());
-        stringOut += totalCostString;
-        return stringOut;
+        String cartFooter = "**************************************************\n";
+        cartString += totalCostString;
+        cartString += cartFooter;
+        return cartString;
     }
-    
+    // @Override
+    // public String toString() {
+    //     String cartString = "";
+    //     String cartHeader = "***********************CART***********************\n";
+    //     String cartFooter = "**************************************************\n";
+    //     String cartTitle = "Ordered Items: \n";
+    //     String stringOut = "";
+    //     String qtyOrderedString = String.format("The cart has %d items\n", qtyOrdered);
+    //     stringOut += qtyOrderedString;
+    //     for (int i = 0; i < qtyOrdered; ++i) {
+    //         String itemString = String.format("Item #%d, Title: %s, Cost: %f\n", i + 1, itemsOrdered[i].getTitle(),
+    //                 itemsOrdered[i].getCost());
+    //         itemString = String.format("%d. DVD - [%s] - [%s] - [%d]: - [%f]$\n", 
+    //             i + 1, 
+    //             itemsOrdered[i].getTitle(),
+    //             itemsOrdered[i].getCategory(),
+    //             itemsOrdered[i].getLength(),
+    //             itemsOrdered[i].getCost());
+    //         stringOut += itemString;
+    //     }
+    //     String totalCostString = String.format("Total Cost: %f\n", totalCost());
+    //     stringOut += totalCostString;
+    //     return stringOut;
+    // }
 }
