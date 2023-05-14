@@ -7,4 +7,5 @@ This file will descript the process of completing the tasks in the Lab 03:
 6. Craete branch "feature/print-cart", modify toString funciton.
 7. Create branch "feature/search-cart", add toString of DVD.
 8. Branch "topic/store", create Class, and Test.
-9. Branch " refactor/packages", refactor all the project.
+9. Branch "refactor/packages", refactor all the project.
+10. Branch "topic/memory-management-string", using String and StringBuiling to test append performance.
