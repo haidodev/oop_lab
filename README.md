@@ -9,3 +9,4 @@ This file will descript the process of completing the tasks in the Lab 03:
 8. Branch "topic/store", create Class, and Test.
 9. Branch "refactor/packages", refactor all the project.
 10. Branch "topic/memory-management-string", using String and StringBuiling to test append performance.
+11. Adding file answer.txt

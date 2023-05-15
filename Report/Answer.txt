@@ -1,0 +1,29 @@
+1. Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compare to an array parameter. What do you prefer in this case?
+
+	addDigitalVideoDisc(DigitalVideoDisc[] dvdList):
+		Pros: Works with an array parameter, clear visibility of array structure, enables direct array passing.
+		Cons: Requires explicit array creation, less convenient for adding individual objects.
+
+	addDigitalVideoDisc(DigitalVideoDisc... dvdList):
+		Pros: More flexibility and convenience for adding multiple objects, allows direct or comma-separated object passing, cleaner syntax.
+		Cons: Less explicit about array structure, may not suit explicit array usage.
+
+	Ultimately, the choice depends on your specific needs and coding preferences. For me, I'll chose varargs because of its convenience and flexibility and not much concern about memory usage at the moment.
+2. Is java a Pass by Value or a Pass by Reference Programming language
+
+	In Java, it is a "pass-by-value" language. When you pass arguments to a method, a copy of the value is passed, whether it is a primitive type or an object reference.
+
+3. After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+
+	The reason the titles of jungleDVD and cinderellaDVD remain unchanged after the call to swap(jungleDVD, cinderellaDVD) is due to the behavior of Java when it comes to passing method arguments.
+	In Java, method arguments are passed by value. When we pass objects as arguments to a method, we are passing the values of the references to those objects. In the swap method, the parameters o1 and o2 are local variables that hold the copies of the references to the objects jungleDVD and cinderellaDVD.
+	When we swap the values of o1 and o2 within the swap method, we are only modifying the local variables, not the original objects jungleDVD and cinderellaDVD. Therefore, the titles of the original objects remain unchanged.
+
+4. After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+
+	When we call changeTitle(jungleDVD, cinderellaDVD.getTitle()), the jungleDVD object is passed as the dvd parameter, and the title of jungleDVD is updated to the value of cinderellaDVD.getTitle() within the method. Additionally, a new DigitalVideoDisc object is created with the old title of jungleDVD, but it does not affect the jungleDVD object outside the method.
+	So, after the method call, the title of jungleDVD changes to the value of cinderellaDVD.getTitle() because the changeTitle method modifies the dvd object passed to it.
+
+
+
+
