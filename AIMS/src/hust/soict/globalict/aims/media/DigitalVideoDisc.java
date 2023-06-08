@@ -1,16 +1,10 @@
 package hust.soict.globalict.aims.media;
 
 
-public class DigitalVideoDisc extends Media {
+public class DigitalVideoDisc extends Disc {
     private static int nbDigitalVideoDiscs = 0;
-    private String director;
-    private int length;
-
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        super(nbDigitalVideoDiscs + 1, title, category, cost);
-        ++nbDigitalVideoDiscs;
-        this.director = director;
-        this.length = length;
+        super(++nbDigitalVideoDiscs, title, category, director, length, cost);
     }
     public DigitalVideoDisc(String title, String category, float cost) {
         this(title, category, null, 0, cost);
@@ -27,19 +21,6 @@ public class DigitalVideoDisc extends Media {
         this(title, category, director, 0, cost);
 
     }
-    public String getDirector() {
-        return director;
-    }
-    public int getLength() {
-        return length;
-    }
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
 
     @Override
     public String toString(){
@@ -47,7 +28,7 @@ public class DigitalVideoDisc extends Media {
                 getId(),
                 getTitle(),
                 getCategory(),
-                length,
+                getLength(),
                 getCost());
     }
 }
