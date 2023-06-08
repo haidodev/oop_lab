@@ -3,44 +3,9 @@ package hust.soict.globalict.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
-    private int id;
-    private String title;
-    private String category;
-    private float cost;
+public class Book extends Media {
     private List<String> authors = new ArrayList<>();
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public float getCost() {
-        return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
     public void addAuthor(String authorName){
         if (authors.contains(authorName)){
             System.out.println("The author " + authorName + " is already listed.");
@@ -56,7 +21,8 @@ public class Book {
         authors.remove(authorName);
     }
 
-    public Book(){
+    public Book(int id, String title, String category, float cost){
+        super(id, title, category, cost);
 
     }
 }
