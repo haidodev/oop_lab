@@ -1,7 +1,7 @@
 package hust.soict.globalict.aims.media;
 
 
-public class DigitalVideoDisc extends Disc {
+public class DigitalVideoDisc extends Disc implements Playable {
     private static int nbDigitalVideoDiscs = 0;
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
         super(++nbDigitalVideoDiscs, title, category, director, length, cost);
@@ -21,7 +21,11 @@ public class DigitalVideoDisc extends Disc {
         this(title, category, director, 0, cost);
 
     }
+    public void play(){
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
 
+    }
     @Override
     public String toString(){
         return String.format("DVD#%d - %s - %s - %d:  %.2f$\n",
