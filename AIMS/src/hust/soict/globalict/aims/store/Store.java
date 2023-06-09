@@ -1,36 +1,31 @@
 package hust.soict.globalict.aims.store;
 
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Media;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Store {
 
     public static final int MAX_NUMBERS_ITEMS = 1000;
-    private DigitalVideoDisc[] itemsInStore = new DigitalVideoDisc[MAX_NUMBERS_ITEMS];
-    private int qtyInStore;
+    private List<Media> itemsInStore = new ArrayList<>();
 
-    public void addDVD(DigitalVideoDisc disc) {
-        itemsInStore[qtyInStore] = disc;
-        ++qtyInStore;
+    public void addMedia(Media media) {
+        itemsInStore.add(media);
         System.out.println("The disc has been added");
     }
 
-    public void addDVD(DigitalVideoDisc... dvdList) {
-        for (DigitalVideoDisc dvd : dvdList) {
-            addDVD(dvd);
+    public void addMedia(Media... mediaList) {
+        for (Media media : mediaList) {
+            addMedia(media);
         }
     }
 
-    public void removeDVD(DigitalVideoDisc disc) {
-        for (int i = 0; i < qtyInStore; ++i) {
-            if (itemsInStore[i] == disc) {
-                --qtyInStore;
-                System.out.println("The disc has been removed");
-                for (int j = i + 1; j < qtyInStore; ++j) {
-                    itemsInStore[j - 1] = itemsInStore[j];
-                }
-                itemsInStore[qtyInStore] = null;
-                return;
-            }
+    public void removeMedia(Media media) {
+        if (itemsInStore.contains(media)){
+            itemsInStore.remove(media);
+            System.out.println("The disc has been removed");
         }
         System.out.println("Cannot find the item.");
     }
@@ -42,11 +37,13 @@ public class Store {
         String cartTitle = "All Items: \n";
         cartString += cartHeader;
         cartString += cartTitle;
-        for (int i = 0; i < qtyInStore; ++i) {
+        int itemCnt = 1;
+        for (Media media : itemsInStore){
             String itemString = String.format("%d. %s",
-                    i + 1,
-                    itemsInStore[i]);
+                    itemCnt,
+                    media);
             cartString += itemString;
+            ++itemCnt;
         }
         String cartFooter = "**************************************************\n";
         cartString += cartFooter;

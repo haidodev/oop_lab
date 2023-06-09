@@ -2,6 +2,7 @@ package hust.soict.globalict.aims.cart;
 
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
+import hust.soict.globalict.aims.media.Playable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,11 +77,13 @@ public class Cart {
         String cartTitle = "Ordered Items: \n";
         cartString += cartHeader;
         cartString += cartTitle;
-        for (int i = 0; i < qtyOrdered; ++i) {
+        int itemCnt = 1;
+        for (Media media : itemsOrdered) {
             String itemString = String.format("%d. %s",
-                    i + 1,
-                    itemsOrdered[i]);
+                    itemCnt,
+                    media);
             cartString += itemString;
+            ++itemCnt;
         }
         String totalCostString = String.format("Total Cost: %f\n", totalCost());
         String cartFooter = "**************************************************\n";

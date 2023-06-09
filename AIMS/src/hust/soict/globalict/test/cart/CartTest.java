@@ -13,14 +13,14 @@ public class CartTest {
         DigitalVideoDisc dvd5 = new DigitalVideoDisc("Inception", "Sci-Fi", "Christopher Nolan", 148, 14.99f);
         DigitalVideoDisc dvd6 = new DigitalVideoDisc("The Shawshank Redemption", "Drama", "Frank Darabont", 142, 9.99f);
 
-        order.addDigitalVideoDisc(dvd1, dvd2, dvd3);
+        order.addMedia(dvd1, dvd2, dvd3);
 
-        order.searchDVD(3);
-        order.searchDVD(5);
-        order.searchDVD("Star Wars");
-        order.searchDVD("Inception");
+        order.searchMedia(3);
+        order.searchMedia(5);
+        order.searchMedia("Star Wars");
+        order.searchMedia("Inception");
 
         System.out.println(order);
-        order.removeDigitalVideoDisc(dvd3);
+        order.removeMedia(dvd3);
     }
 }
