@@ -44,4 +44,14 @@ public class CompactDisc extends Disc implements Playable{
             track.play();
         }
     }
+    @Override
+    public String toString(){
+        return String.format("CD#%d - %s - %s - %s - %d:  %.2f$\n",
+                getId(),
+                getTitle(),
+                getCategory(),
+                getArtist(),
+                getLength(),
+                getCost());
+    }
 }

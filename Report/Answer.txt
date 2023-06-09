@@ -1,29 +1,21 @@
-1. Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compare to an array parameter. What do you prefer in this case?
+1. Polymorphism with toString() method
+Question: Iterate through the list and print out the information of the media by using toString() method. Observe what happens and explain in detail.
+After running the program, the output when print Book, CompactDisc, DigitalVideoDisc are different.
+In the definition of the 3 class, I defined 3 different toString method to illustrate the difference.
+Each class (Book, CompactDisc, DigitalVideoDisc) has its own implementation of the toString method. This behavior is achieved through dynamic binding, which is a feature of object-oriented programming languages that allows the appropriate method implementation to be determined at runtime based on the actual type of the object being referred to.
+Dynamic binding ensures that when the toString method is invoked on an object of a particular class, the appropriate implementation of the method associated with that class is executed. This allows each class to define its own specific behavior for representing its objects as strings.
+This enables polymorphic behavior, where different objects of related classes can respond differently to the same method call (toString in this case) based on their specific implementations.
 
-	addDigitalVideoDisc(DigitalVideoDisc[] dvdList):
-		Pros: Works with an array parameter, clear visibility of array structure, enables direct array passing.
-		Cons: Requires explicit array creation, less convenient for adding individual objects.
+2. Sort media in the cart
+What class should implement the Comparable interface?
+The class that represents the objects to be sorted should implement the Comparable interface. In this case, it would be the class representing the items (e.g., Book, CompactDisc, DigitalVideoDisc).
 
-	addDigitalVideoDisc(DigitalVideoDisc... dvdList):
-		Pros: More flexibility and convenience for adding multiple objects, allows direct or comma-separated object passing, cleaner syntax.
-		Cons: Less explicit about array structure, may not suit explicit array usage.
+In those classes, how should you implement the compareTo()method be to reflect the ordering that we want?
+In the classes that implement the Comparable interface, we have to implement the compareTo() method to define the ordering based on the desired criteria. The method should return a negative integer, zero, or a positive integer based on whether the current object is less than, equal to, or greater than the object being compared to, respectively.
 
-	Ultimately, the choice depends on your specific needs and coding preferences. For me, I'll chose varargs because of its convenience and flexibility and not much concern about memory usage at the moment.
-2. Is java a Pass by Value or a Pass by Reference Programming language
+Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+With the Comparable interface approach, we can only define one ordering rule for the item.
+If you need to have multiple ordering rules, such as sorting by title then cost and by cost then title, we would need to implement a separate custom Comparator class for each ordering rule.
 
-	In Java, it is a "pass-by-value" language. When you pass arguments to a method, a copy of the value is passed, whether it is a primitive type or an object reference.
-
-3. After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
-
-	The reason the titles of jungleDVD and cinderellaDVD remain unchanged after the call to swap(jungleDVD, cinderellaDVD) is due to the behavior of Java when it comes to passing method arguments.
-	In Java, method arguments are passed by value. When we pass objects as arguments to a method, we are passing the values of the references to those objects. In the swap method, the parameters o1 and o2 are local variables that hold the copies of the references to the objects jungleDVD and cinderellaDVD.
-	When we swap the values of o1 and o2 within the swap method, we are only modifying the local variables, not the original objects jungleDVD and cinderellaDVD. Therefore, the titles of the original objects remain unchanged.
-
-4. After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
-
-	When we call changeTitle(jungleDVD, cinderellaDVD.getTitle()), the jungleDVD object is passed as the dvd parameter, and the title of jungleDVD is updated to the value of cinderellaDVD.getTitle() within the method. Additionally, a new DigitalVideoDisc object is created with the old title of jungleDVD, but it does not affect the jungleDVD object outside the method.
-	So, after the method call, the title of jungleDVD changes to the value of cinderellaDVD.getTitle() because the changeTitle method modifies the dvd object passed to it.
-
-
-
-
+Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+See in "package hust.soict.globalict.aims.media.comparable.DigitalVideoDisc"

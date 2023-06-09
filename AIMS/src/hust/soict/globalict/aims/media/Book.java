@@ -25,4 +25,12 @@ public class Book extends Media {
         super(id, title, category, cost);
 
     }
+    public String toString(){
+        return String.format("Book#%d - %s - %s - %s:  %.2f$\n",
+                getId(),
+                getTitle(),
+                getCategory(),
+                String.join(", ", authors),
+                getCost());
+    }
 }
