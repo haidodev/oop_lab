@@ -24,7 +24,7 @@ public class CompactDisc extends Disc implements Playable{
     }
     public void removeTrack(Track trackName){
         if (tracks.contains(trackName)){
-            System.out.println("Not found author " + trackName.getTitle());
+            System.out.println("Not found track " + trackName.getTitle());
             return;
         }
         tracks.add(trackName);

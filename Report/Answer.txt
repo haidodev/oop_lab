@@ -1,3 +1,7 @@
+0. Unique item in a list
+Question: If the passing object is not an instance of Media, what happens?
+Answer: As in the equals definition, the program will check if an Object is instance of Media before advancing to the next step, and if it is not an instance of Media, the program will immediately return False.
+
 1. Polymorphism with toString() method
 Question: Iterate through the list and print out the information of the media by using toString() method. Observe what happens and explain in detail.
 After running the program, the output when print Book, CompactDisc, DigitalVideoDisc are different.

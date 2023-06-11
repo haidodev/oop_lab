@@ -25,6 +25,47 @@ public class SampleMedia {
                 new CompactDisc("Hotel California", "Rock", "Eagles", "Eagles", 9, 12.99f),
                 new CompactDisc("The Joshua Tree", "Rock", "U2", "U2", 11, 15.99f)
         };
+        compactDiscList[0].addTrack(new Track("Come Together", 259));
+        compactDiscList[0].addTrack(new Track("Something", 181));
+        compactDiscList[0].addTrack(new Track("Maxwell's Silver Hammer", 203));
+
+        compactDiscList[1].addTrack(new Track("Wanna Be Startin' Somethin'", 369));
+        compactDiscList[1].addTrack(new Track("Beat It", 258));
+        compactDiscList[1].addTrack(new Track("Billie Jean", 293));
+
+        compactDiscList[2].addTrack(new Track("Speak to Me", 67));
+        compactDiscList[2].addTrack(new Track("Breathe", 163));
+        compactDiscList[2].addTrack(new Track("On the Run", 227));
+
+// Add more tracks for CompactDisc object 3...
+        compactDiscList[3].addTrack(new Track("Hells Bells", 312));
+        compactDiscList[3].addTrack(new Track("Shoot to Thrill", 314));
+        compactDiscList[3].addTrack(new Track("Back in Black", 255));
+// Add more tracks for CompactDisc object 4...
+        compactDiscList[4].addTrack(new Track("Smells Like Teen Spirit", 302));
+        compactDiscList[4].addTrack(new Track("In Bloom", 254));
+        compactDiscList[4].addTrack(new Track("Come as You Are", 219));
+// Add more tracks for CompactDisc object 5...
+        compactDiscList[5].addTrack(new Track("Without Me", 284));
+        compactDiscList[5].addTrack(new Track("Cleanin' Out My Closet", 288));
+        compactDiscList[5].addTrack(new Track("Sing for the Moment", 440));
+// Add more tracks for CompactDisc object 6...
+        compactDiscList[6].addTrack(new Track("Second Hand News", 156));
+        compactDiscList[6].addTrack(new Track("Dreams", 254));
+        compactDiscList[6].addTrack(new Track("Never Going Back Again", 138));
+// Add more tracks for CompactDisc object 7...
+        compactDiscList[7].addTrack(new Track("Born in the U.S.A.", 289));
+        compactDiscList[7].addTrack(new Track("Cover Me", 228));
+        compactDiscList[7].addTrack(new Track("Dancing in the Dark", 238));
+// Add more tracks for CompactDisc object 8...
+        compactDiscList[8].addTrack(new Track("Hotel California", 390));
+        compactDiscList[8].addTrack(new Track("New Kid in Town", 325));
+        compactDiscList[8].addTrack(new Track("Life in the Fast Lane", 292));
+// Add more tracks for CompactDisc object 9...
+        compactDiscList[9].addTrack(new Track("Where the Streets Have No Name", 356));
+        compactDiscList[9].addTrack(new Track("I Still Haven't Found What I'm Looking For", 275));
+        compactDiscList[9].addTrack(new Track("With or Without You", 296));
+
         DigitalVideoDisc[] dvdList = {
                 new DigitalVideoDisc("The Shawshank Redemption", "Drama", "Frank Darabont", 142, 9.99f),
                 new DigitalVideoDisc("The Godfather", "Crime", "Francis Ford Coppola", 175, 11.99f),

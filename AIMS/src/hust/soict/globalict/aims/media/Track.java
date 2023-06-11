@@ -25,6 +25,10 @@ public class Track implements Playable {
         this.length = length;
     }
     public void play(){
+        if (length < 0){
+            System.out.println("Track " + title + " cannot be played");
+            return;
+        }
         System.out.println("Playing Track: " + this.getTitle());
         System.out.println("Track length: " + this.getLength());
 
