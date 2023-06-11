@@ -12,22 +12,22 @@ import java.util.List;
 public class MediaTest {
     public static void main(String[] args) {
         List<Media> mediae = new ArrayList<>();
-        Book book = new Book(1234, "The Great Gatsby", "Fiction", 12.99f);
+        Book book = new Book("The Great Gatsby", "Fiction", 12.99f);
         book.addAuthor("F. Scott Fitzgerald");
         book.addAuthor("Ernest Hemingway");
         mediae.add(book);
-        mediae.add(new CompactDisc(1, "Abbey Road", "Rock", "The Beatles", "The Beatles", 47, 14.99f));
+        mediae.add(new CompactDisc("Abbey Road", "Rock", "The Beatles", "The Beatles", 47, 14.99f));
         mediae.add(new DigitalVideoDisc("The Shawshank Redemption", "Drama", "Frank Darabont", 142, 9.99f));
         for (Media media : mediae){
             System.out.print(media);
         }
         System.out.println("---");
-        mediae.sort(Media.COMPARE_BY_COST_TOTAL);
+        mediae.sort(Media.COMPARE_BY_COST_TITLE);
         for (Media media : mediae){
             System.out.print(media);
         }
         System.out.println("---");
-        mediae.sort(Media.COMPARE_BY_TOTAL_COST);
+        mediae.sort(Media.COMPARE_BY_TITLE_COST);
         for (Media media : mediae){
             System.out.print(media);
         }

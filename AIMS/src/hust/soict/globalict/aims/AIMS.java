@@ -1,10 +1,33 @@
 package hust.soict.globalict.aims;
 
 import hust.soict.globalict.aims.cart.Cart;
+import hust.soict.globalict.aims.interaction.CLI;
+import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Disc;
+import hust.soict.globalict.aims.media.Media;
+import hust.soict.globalict.aims.store.Store;
+import hust.soict.globalict.test.sample.SampleMedia;
+
+import java.util.Collections;
+import java.util.List;
 
 public class AIMS {
-    public static void main(String[] args) {
+    private final SampleMedia sampleMedia = new SampleMedia(6);
+    private final Cart cart = new Cart();
+    private final Store store = new Store();
+
+    public AIMS (List<Media> allProd){
+        for (Media media : allProd) {
+            store.addMedia(media);
+        }
+    }
+    public AIMS(){
+        for (Media media : sampleMedia.mediaList) {
+            store.addMedia(media);
+        }
+    }
+    public void test() {
         Cart order = new Cart();
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
@@ -24,5 +47,160 @@ public class AIMS {
         order.removeMedia(dvd3);
 
         System.out.println(order);
+    }
+    private void viewStore(){
+        int number = -1;
+        while (number != 0){
+            System.out.println(store);
+            CLI.storeMenu();
+            number = CLI.readInput(4);
+            switch (number) {
+                case 1 -> viewMediaDetail();
+                case 2 -> addMediaToCart();
+                case 3 -> playMedia();
+                case 4 -> showCart();
+            }
+        }
+    }
+    private void viewMediaDetail(){
+        String mediaTitle = CLI.readMediaName();
+        if (!store.searchMedia(mediaTitle)) return;
+        Media media = store.getMedia(mediaTitle);
+        int number = -1;
+        while (number != 0){
+            CLI.mediaDetailsMenu(media instanceof Disc);
+            number = media instanceof Disc ? CLI.readInput(2) : CLI.readInput(1);
+            switch (number) {
+                case 1 -> addMediaToCart(media);
+                case 2 -> playMedia(media);
+            }
+        }
+    }
+    private void addMediaToCart(Media media){
+        cart.addMedia(media);
+    }
+    private void addMediaToCart(){
+        String mediaTitle = CLI.readMediaName();
+        if (!store.searchMedia(mediaTitle)) return;
+        Media media = store.getMedia(mediaTitle);
+        addMediaToCart(media);
+    }
+    private void playMedia(Media media){
+        if (!(media instanceof Disc)){
+            System.out.println(media + " is not playable.");
+            return;
+        }
+        if (media instanceof CompactDisc) ((CompactDisc) media).play();
+        if (media instanceof DigitalVideoDisc) ((DigitalVideoDisc) media).play();
+
+    }
+    private void playMedia(){
+        String mediaTitle = CLI.readMediaName();
+        if (!store.searchMedia(mediaTitle)) return;
+        Media media = store.getMedia(mediaTitle);
+        playMedia(media);
+    }
+
+    private void updateStore(){
+        System.out.println(cart);
+        int number = -1;
+        while (number != 0){
+            CLI.updateStoreMenu();
+            number = CLI.readInput(2);
+            switch (number) {
+                case 1 -> addMediaToStore();
+                case 2 -> removeMediaFromStore();
+            }
+
+        }
+    }
+    private void addMediaToStore(){
+        store.addMedia(sampleMedia.getNext());
+        CLI.addItem();
+    }
+    private void showCart(){
+        int number = -1;
+        while (number != 0){
+            System.out.println(cart);
+            CLI.cartMenu();
+            number = CLI.readInput(5);
+            switch (number) {
+                case 1 -> filterMedia();
+                case 2 -> sortMedia();
+                case 3 -> removeMediaFromCart();
+                case 4 -> playMedia();
+                case 5 -> placeOrder();
+            }
+
+        }
+
+    }
+    private void filterMedia(){
+        int number = -1;
+        while (number != 0){
+            CLI.filterMediaMenu();
+            number = CLI.readInput(5);
+            switch (number) {
+                case 1 -> filterMediaById();
+                case 2 -> filterMediaByTitle();
+            }
+
+        }
+    }
+    private void filterMediaById(){
+        int id = CLI.readInput();
+        if (!cart.searchMedia(id)) return;
+        Media media = cart.getMedia(id);
+        System.out.println(media);
+    }
+    private void filterMediaByTitle(){
+        String mediaTitle = CLI.readMediaName();
+        if (!cart.searchMedia(mediaTitle)) return;
+        Media media = cart.getMedia(mediaTitle);
+        System.out.println(media);
+    }
+    private void sortMedia(){
+        int number = -1;
+            CLI.sortMediaMenu();
+            number = CLI.readInput(5);
+            switch (number) {
+                case 1 -> cart.sortMediaByCostTitle();
+                case 2 -> cart.sortMediaByTitleCost();
+            }
+
+    }
+
+    private void removeMediaFromStore(){
+        String mediaTitle = CLI.readMediaName();
+        if (!store.searchMedia(mediaTitle)) return;
+        Media media = store.getMedia(mediaTitle);
+        cart.removeMedia(media);
+    }
+    private void removeMediaFromCart(){
+        String mediaTitle = CLI.readMediaName();
+        if (!cart.searchMedia(mediaTitle)) return;
+        Media media = cart.getMedia(mediaTitle);
+        cart.removeMedia(media);
+    }
+    private void placeOrder(){
+        CLI.placeOrder();
+        cart.removeAllMedia();
+    }
+    public void runAIMS(){
+        int number = -1;
+        while (number != 0){
+            CLI.showMenu();
+            number = CLI.readInput(3);
+            switch (number) {
+                case 1 -> viewStore();
+                case 2 -> updateStore();
+                case 3 -> showCart();
+            }
+        }
+    }
+    public static void main(String[] args) {
+        AIMS aims = new AIMS();
+        aims.runAIMS();
+
     }
 }

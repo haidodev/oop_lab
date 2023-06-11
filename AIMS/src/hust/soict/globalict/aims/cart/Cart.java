@@ -39,6 +39,9 @@ public class Cart {
         }
         System.out.println("Cannot find the item.");
     }
+    public void removeAllMedia() {
+        itemsOrdered.clear();
+    }
 
     public float totalCost(){
         float cost = 0;
@@ -69,6 +72,28 @@ public class Cart {
         }
         System.out.println("Not found DVD.");
         return false;
+    }
+    public Media getMedia(int id){
+        for (Media media: itemsOrdered){
+            if (media.getId() == id) {
+                return media;
+            }
+        }
+        return null;
+    }
+    public Media getMedia(String title){
+        for (Media media: itemsOrdered){
+            if (title.equals(media.getTitle())) {
+                return media;
+            }
+        }
+        return null;
+    }
+    public void sortMediaByCostTitle(){
+        itemsOrdered.sort(Media.COMPARE_BY_COST_TITLE);
+    }
+    public void sortMediaByTitleCost(){
+        itemsOrdered.sort(Media.COMPARE_BY_TITLE_COST);
     }
     @Override
     public String toString() {

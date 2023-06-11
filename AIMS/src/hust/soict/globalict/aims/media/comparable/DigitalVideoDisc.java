@@ -6,7 +6,7 @@ import hust.soict.globalict.aims.media.Playable;
 public class DigitalVideoDisc extends Disc implements Playable, Comparable<DigitalVideoDisc> {
     private static int nbDigitalVideoDiscs = 0;
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        super(++nbDigitalVideoDiscs, title, category, director, length, cost);
+        super(title, category, director, length, cost);
     }
     public DigitalVideoDisc(String title, String category, float cost) {
         this(title, category, null, 0, cost);

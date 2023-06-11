@@ -29,7 +29,36 @@ public class Store {
         }
         System.out.println("Cannot find the item.");
     }
-
+    public Boolean searchMedia(int id){
+        for (Media media: itemsInStore){
+            if (media.getId() == id) {
+                System.out.println("Found DVD: ");
+                System.out.println(media);
+                return true;
+            }
+        }
+        System.out.println("Not found DVD.");
+        return false;
+    }
+    public Boolean searchMedia(String title){
+        for (Media media: itemsInStore){
+            if (title.equals(media.getTitle())) {
+                System.out.println("Found DVD: ");
+                System.out.println(media);
+                return true;
+            }
+        }
+        System.out.println("Not found DVD.");
+        return false;
+    }
+    public Media getMedia(String title){
+        for (Media media: itemsInStore){
+            if (title.equals(media.getTitle())) {
+                return media;
+            }
+        }
+        return null;
+    }
     @Override
     public String toString() {
         String cartString = "";

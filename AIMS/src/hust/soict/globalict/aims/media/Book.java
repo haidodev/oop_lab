@@ -21,8 +21,8 @@ public class Book extends Media {
         authors.remove(authorName);
     }
 
-    public Book(int id, String title, String category, float cost){
-        super(id, title, category, cost);
+    public Book(String title, String category, float cost){
+        super(title, category, cost);
 
     }
     public String toString(){
