@@ -8,3 +8,4 @@ This file will descript the process of completing the tasks in the Lab 04:
 7. Unique item in a list "feature/equals-override"
 8. Sort media in the cart "feature/comparison"
 9. Create a complete console application in the Aims class "feature/command-line-interface"
+10. Constructors of whole classes and parent classes "topic/class-diagram"

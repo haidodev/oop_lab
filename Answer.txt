@@ -9,10 +9,17 @@ In the definition of the 3 class, I defined 3 different toString method to illus
 Each class (Book, CompactDisc, DigitalVideoDisc) has its own implementation of the toString method. This behavior is achieved through dynamic binding, which is a feature of object-oriented programming languages that allows the appropriate method implementation to be determined at runtime based on the actual type of the object being referred to.
 Dynamic binding ensures that when the toString method is invoked on an object of a particular class, the appropriate implementation of the method associated with that class is executed. This allows each class to define its own specific behavior for representing its objects as strings.
 This enables polymorphic behavior, where different objects of related classes can respond differently to the same method call (toString in this case) based on their specific implementations.
+2. Constructors of whole classes and parent classes
+Question: Which classes are aggregates of other classes? Checking all constructors of whole classes if they initialize for their parts?
+CompactDisc -> Track
+Store -> Media
+Cart -> Media
+AIMS -> Store
+AIMS -> Cart
 
-2. Sort media in the cart
+3. Sort media in the cart
 What class should implement the Comparable interface?
-The class that represents the objects to be sorted should implement the Comparable interface. In this case, it would be the class representing the items (e.g., Book, CompactDisc, DigitalVideoDisc).
+The class that represents the objects to be sorted should implement the Comparable interface. In this case, it would be the class representing the items Media.
 
 In those classes, how should you implement the compareTo()method be to reflect the ordering that we want?
 In the classes that implement the Comparable interface, we have to implement the compareTo() method to define the ordering based on the desired criteria. The method should return a negative integer, zero, or a positive integer based on whether the current object is less than, equal to, or greater than the object being compared to, respectively.
