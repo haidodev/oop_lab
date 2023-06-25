@@ -9,7 +9,7 @@ import java.util.List;
 public class Store {
 
     public static final int MAX_NUMBERS_ITEMS = 1000;
-    private List<Media> itemsInStore = new ArrayList<>();
+    private final List<Media> itemsInStore = new ArrayList<>();
 
     public void addMedia(Media media) {
         itemsInStore.add(media);
@@ -79,4 +79,7 @@ public class Store {
         return cartString;
     }
 
+    public ArrayList<Media> getItemsInStore() {
+        return (ArrayList<Media>) itemsInStore;
+    }
 }

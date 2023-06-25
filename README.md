@@ -3,3 +3,4 @@ This file will descript the process of completing the tasks in the Lab 05:
 2. AWTAccumulator "feature/AWTAccumulator"
 3. SwingAccumulator "feature/SwingAccumulator"
 4. Using JPanel as secondary-level container to organize components "feature/NumberGrid"
+5. Create a graphical user interface for AIMS with Swing "feature/StoreScreen"
