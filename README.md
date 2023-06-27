@@ -9,3 +9,4 @@ This file will description the process of completing the tasks in the Lab 05:
 8. Integrating JavaFX into Swing application – The JFXPanel class "feature/CartScreen"
 9. View the items in cart – JavaFX’s data-driven UI "feature/CartScreenController"
 10. Updating buttons based on selected item in TableView – ChangeListener "feature/CartScreenController - Buttons"
+11. Deleting a media "feature/btnRemoveFunction"
