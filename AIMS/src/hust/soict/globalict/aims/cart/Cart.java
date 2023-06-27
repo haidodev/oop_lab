@@ -3,6 +3,8 @@ package hust.soict.globalict.aims.cart;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.Playable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 50;
-    private final List<Media> itemsOrdered = new ArrayList<>();
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     private int qtyOrdered;
     public void addMedia(Media media){
         if (itemsOrdered.size() >= MAX_NUMBERS_ORDERED){
@@ -115,6 +117,10 @@ public class Cart {
         cartString += totalCostString;
         cartString += cartFooter;
         return cartString;
+    }
+
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
     }
 }
 

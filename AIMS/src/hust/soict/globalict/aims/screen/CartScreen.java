@@ -1,6 +1,8 @@
 package hust.soict.globalict.aims.screen;
 
 import hust.soict.globalict.aims.cart.Cart;
+import hust.soict.globalict.aims.media.Media;
+import hust.soict.globalict.test.sample.SampleMedia;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,8 @@ public class CartScreen extends JFrame {
         this.cart = cart;
         JFXPanel fxPanel = new JFXPanel();
         this.add(fxPanel);
+        this.setSize(1024, 768);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setTitle("Cart");
         this.setVisible(true);
@@ -24,16 +28,26 @@ public class CartScreen extends JFrame {
             @Override
             public void run() {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/screen/fxml/cart.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/cart.fxml"));
                     CartScreenController controller = new CartScreenController(cart);
                     loader.setController(controller);
                     Parent root = loader.load();
                     fxPanel.setScene(new Scene(root));
                 } catch (IOException e) {
+                    e.printStackTrace();
                     throw new RuntimeException(e);
                 }
 
             }
         });
+    }
+
+    public static void main(String[] args) {
+        Cart cart = new Cart();
+        SampleMedia sampleMedia = new SampleMedia(6);
+        for (Media media : sampleMedia.mediaList) {
+            cart.addMedia(media);
+        }
+        new CartScreen(cart);
     }
 }
