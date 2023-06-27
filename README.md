@@ -6,3 +6,4 @@ This file will description the process of completing the tasks in the Lab 05:
 5. Create a graphical user interface for AIMS with Swing "feature/StoreScreen"
 6. JavaFX API "feature/Painter"
 7. Setting up the View Cart Screen with ScreenBuilder "feature/CartFXML"
+8. Integrating JavaFX into Swing application – The JFXPanel class "feature/CartScreen"
