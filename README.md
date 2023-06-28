@@ -11,3 +11,4 @@ This file will description the process of completing the tasks in the Lab 05:
 10. Updating buttons based on selected item in TableView – ChangeListener "feature/CartScreenController - Buttons"
 11. Deleting a media "feature/btnRemoveFunction"
 12. Filter items in cart – FilteredList "feature/FilteredList"
+13. Complete the Aims GUI application "feature/AIMS GUI"

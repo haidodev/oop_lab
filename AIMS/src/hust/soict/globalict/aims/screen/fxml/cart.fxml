@@ -85,8 +85,8 @@
             </TableView>
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
               <buttons>
-                  <Button fx:id="btnPlay" mnemonicParsing="false" text="Play" />
-                <Button fx:id="btnRemove" mnemonicParsing="false" text="Remove" />
+                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayPressed" text="Play" />
+                <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemovePressed" text="Remove" />
               </buttons>
             </ButtonBar>
          </children>
@@ -105,14 +105,14 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label text="0$" textFill="AQUA">
+                  <Label fx:id="labelTotalCost" text="0$" textFill="AQUA">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" style="-fx-background-color: red;" text="Place Order" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#handleOrderProcess" style="-fx-background-color: red;" text="Place Order" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

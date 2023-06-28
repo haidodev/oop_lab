@@ -16,6 +16,8 @@ import java.util.Objects;
 public class CartScreenController {
     private Cart cart;
     @FXML
+    private Label labelTotalCost;
+    @FXML
     private Button btnPlay;
     @FXML
     private Button btnRemove;
@@ -29,13 +31,20 @@ public class CartScreenController {
     private TableView<Media> tblMedia;
     @FXML
     private TableColumn<Media, Float> colMediaCost;
-
     @FXML
     private TableColumn<Media, String> colMediaTitle;
 
     @FXML
     private TableColumn<Media, String> colMediacategory;
+    @FXML
+    private void handleOrderProcess(ActionEvent event){
 
+        cart.removeAllMedia();
+        labelTotalCost.setText(String.format("%.2f$", this.cart.totalCost()));
+        OrderProcessDialog orderDialog = new OrderProcessDialog();
+        orderDialog.setVisible(true);
+
+    }
 
     public CartScreenController(Cart cart){
         super();
@@ -45,6 +54,13 @@ public class CartScreenController {
     private void btnRemovePressed(ActionEvent event){
         Media media = tblMedia.getSelectionModel().getSelectedItem();
         cart.removeMedia(media);
+        labelTotalCost.setText(String.format("%.2f$", this.cart.totalCost()));
+    }
+    @FXML
+    private void btnPlayPressed(ActionEvent event){
+        Media media = tblMedia.getSelectionModel().getSelectedItem();
+        PlayDialog dialog = new PlayDialog("Playing " + media.getTitle());
+        dialog.setVisible(true);
     }
     @FXML
     private void initialize(){
@@ -52,6 +68,7 @@ public class CartScreenController {
         colMediacategory.setCellValueFactory(new PropertyValueFactory<Media, String>("category"));
         colMediaCost.setCellValueFactory(new PropertyValueFactory<Media, Float>("cost"));
         tblMedia.setItems(this.cart.getItemsOrdered());
+        labelTotalCost.setText(String.format("%.2f$", this.cart.totalCost()));
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
 
@@ -82,7 +99,6 @@ public class CartScreenController {
             filteredCart.setPredicate(media -> media.getTitle().contains(newValue));
         }
         tblMedia.setItems(filteredCart);
-        
     }
 
     private void updateButtonBar(Media media){

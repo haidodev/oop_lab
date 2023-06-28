@@ -13,7 +13,6 @@ public class Store {
 
     public void addMedia(Media media) {
         itemsInStore.add(media);
-        System.out.println("The disc has been added");
     }
 
     public void addMedia(Media... mediaList) {
@@ -23,11 +22,7 @@ public class Store {
     }
 
     public void removeMedia(Media media) {
-        if (itemsInStore.contains(media)){
-            itemsInStore.remove(media);
-            System.out.println("The disc has been removed");
-        }
-        System.out.println("Cannot find the item.");
+        itemsInStore.remove(media);
     }
     public Boolean searchMedia(int id){
         for (Media media: itemsInStore){

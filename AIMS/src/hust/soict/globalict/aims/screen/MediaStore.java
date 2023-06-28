@@ -1,20 +1,19 @@
 package hust.soict.globalict.aims.screen;
 
+import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.Playable;
-import hust.soict.globalict.swing.PlayDialog;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class MediaStore extends JPanel {
+    private Cart cart;
     private Media media;
-    public MediaStore(Media media){
+    public MediaStore(Media media, Cart cart){
+        this.cart = cart;
         this.media = media;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -31,7 +30,7 @@ public class MediaStore extends JPanel {
         addToCartBtn.addActionListener(new AddToCartBtnListener());
         container.add(addToCartBtn);
         if (media instanceof Playable){
-            JButton playBtn = new JButton("PLay");
+            JButton playBtn = new JButton("Play");
 //            PlayBtnListener playBtnListener = ;
             playBtn.addActionListener(new PlayBtnListener());
             container.add(playBtn);
@@ -47,28 +46,15 @@ public class MediaStore extends JPanel {
     private class PlayBtnListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            String btn = e.getActionCommand();
-            System.out.println(btn);
-//            JDialog dialog = new JDialog();
             PlayDialog dialog = new PlayDialog();
             dialog.setVisible(true);
         }
     }
     private class AddToCartBtnListener implements ActionListener {
-        private static void appendLineToFile(String lineToAdd) throws IOException {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("data/Cart.txt", true));
-            writer.write(lineToAdd);
-            writer.newLine();
-            writer.close();
-        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                appendLineToFile(media.getTitle());
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            cart.addMedia(media);
         }
     }
 }
