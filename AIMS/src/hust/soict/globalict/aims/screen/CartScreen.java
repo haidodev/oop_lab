@@ -44,7 +44,12 @@ public class CartScreen extends JFrame {
 
     public static void main(String[] args) {
         Cart cart = new Cart();
-        SampleMedia sampleMedia = new SampleMedia(6);
+        SampleMedia sampleMedia = null;
+        try {
+            sampleMedia = new SampleMedia(6);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         for (Media media : sampleMedia.mediaList) {
             cart.addMedia(media);
         }

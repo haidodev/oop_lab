@@ -9,6 +9,7 @@ import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.store.Store;
 import hust.soict.globalict.test.sample.SampleMedia;
 
+import javax.naming.LimitExceededException;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,17 +18,25 @@ public class AIMS {
     private final Cart cart = new Cart();
     private final Store store = new Store();
 
-    public AIMS (List<Media> allProd){
+    public AIMS (List<Media> allProd) throws Exception {
         for (Media media : allProd) {
-            store.addMedia(media);
+            try {
+                store.addMedia(media);
+            } catch (LimitExceededException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
-    public AIMS(){
+    public AIMS() throws Exception {
         for (Media media : sampleMedia.mediaList) {
-            store.addMedia(media);
+            try {
+                store.addMedia(media);
+            } catch (LimitExceededException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
-    public void test() {
+    public void test() throws Exception {
         Cart order = new Cart();
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
@@ -115,7 +124,11 @@ public class AIMS {
         }
     }
     private void addMediaToStore(){
-        store.addMedia(sampleMedia.getNext());
+        try {
+            store.addMedia(sampleMedia.getNext());
+        } catch (LimitExceededException e) {
+            System.out.println(e.getMessage());
+        }
         CLI.addItem();
     }
     private void showCart(){
@@ -199,7 +212,12 @@ public class AIMS {
         }
     }
     public static void main(String[] args) {
-        AIMS aims = new AIMS();
+        AIMS aims = null;
+        try {
+            aims = new AIMS();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         aims.runAIMS();
 
     }

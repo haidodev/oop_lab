@@ -4,6 +4,7 @@ package hust.soict.globalict.aims.screen;
         import hust.soict.globalict.aims.media.Media;
         import hust.soict.globalict.aims.store.Store;
 
+        import javax.naming.LimitExceededException;
         import javax.swing.*;
         import java.awt.*;
         import java.awt.event.ActionEvent;
@@ -50,11 +51,17 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen{
         setVisible(true);
         setResizable(false);
 
-        createButton.addActionListener(e -> store.addMedia(createMedia()));
+        createButton.addActionListener(e -> {
+            try {
+                store.addMedia(createMedia());
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        });
     }
 
     @Override
-    protected Media createMedia() {
+    protected Media createMedia() throws Exception {
         String title = titleTextField.getText();
         String category = categoryTextField.getText();
         float cost = Float.parseFloat(costTextField.getText());

@@ -5,12 +5,23 @@ import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.store.Store;
 import hust.soict.globalict.test.sample.SampleMedia;
 
+import javax.naming.LimitExceededException;
+
 public class AIMSScreen {
     public static void main(String[] args) {
         Store store = new Store();
-        SampleMedia sampleMedia = new SampleMedia(10);
+        SampleMedia sampleMedia = null;
+        try {
+            sampleMedia = new SampleMedia(10);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         for (Media media : sampleMedia.mediaList) {
-            store.addMedia(media);
+            try {
+                store.addMedia(media);
+            } catch (LimitExceededException e) {
+                System.out.println(e.getMessage());
+            }
         }
         Cart cart = new Cart();
         new StoreScreen(store, cart);

@@ -3,6 +3,7 @@ package hust.soict.globalict.aims.store;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +12,18 @@ public class Store {
     public static final int MAX_NUMBERS_ITEMS = 1000;
     private final List<Media> itemsInStore = new ArrayList<>();
 
-    public void addMedia(Media media) {
-        itemsInStore.add(media);
+    public void addMedia(Media media) throws LimitExceededException {
+        if (itemsInStore.size() < MAX_NUMBERS_ITEMS) itemsInStore.add(media);
+        else throw new LimitExceededException("ERROR: The number of media has reached its limit.");
     }
 
-    public void addMedia(Media... mediaList) {
-        for (Media media : mediaList) {
-            addMedia(media);
-        }
+    public void addMedia(Media... mediaList) throws LimitExceededException{
+        if (itemsInStore.size() + mediaList.length <= MAX_NUMBERS_ITEMS) {
+            for (Media media : mediaList) {
+                addMedia(media);
+            }
+        } else throw new LimitExceededException("ERROR: The number of media has reached its limit.");
+
     }
 
     public void removeMedia(Media media) {

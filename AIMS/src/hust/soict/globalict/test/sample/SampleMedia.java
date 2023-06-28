@@ -12,7 +12,7 @@ public class SampleMedia {
     private int nbOfMedia;
 
 
-    public SampleMedia(int nbOfMedia){
+    public SampleMedia(int nbOfMedia) throws Exception {
         CompactDisc[] compactDiscList = {
                 new CompactDisc("Abbey Road", "Rock", "The Beatles", "The Beatles", 17, 14.99f),
                 new CompactDisc("Thriller", "Pop", "Michael Jackson", "Michael Jackson", 9, 12.99f),
@@ -120,7 +120,7 @@ public class SampleMedia {
         this.nbOfMedia = nbOfMedia;
 
     }
-    public SampleMedia(){
+    public SampleMedia() throws Exception {
         this(0);
     }
     public Media getNext(){

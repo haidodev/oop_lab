@@ -5,6 +5,7 @@ import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.store.Store;
 import hust.soict.globalict.test.sample.SampleMedia;
 
+import javax.naming.LimitExceededException;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -92,19 +93,5 @@ public class StoreScreen extends JFrame {
             center.add(cell);
         }
         return center;
-    }
-
-    public static void main(String[] args) {
-        Store store = new Store();
-        SampleMedia sampleMedia = new SampleMedia(10);
-        for (Media media : sampleMedia.mediaList) {
-            store.addMedia(media);
-        }
-        Cart cart = new Cart();
-        sampleMedia = new SampleMedia(6);
-        for (Media media : sampleMedia.mediaList) {
-            cart.addMedia(media);
-        }
-        new StoreScreen(store, cart);
     }
 }

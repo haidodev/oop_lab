@@ -13,7 +13,8 @@ public abstract class Media {
     private float cost;
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
-    public Media(String title, String category, float cost){
+    public Media(String title, String category, float cost) throws Exception {
+        if (cost <= 0) throw new Exception("ERROR: The cost of a media cannot be smaller than 0!");
         ++nbMedias;
         this.id = nbMedias;
         this.title = title;

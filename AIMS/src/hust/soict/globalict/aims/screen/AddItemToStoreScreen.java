@@ -52,5 +52,5 @@ public abstract class AddItemToStoreScreen extends JDialog {
         gbc.gridy = 2;
         mainPanel.add(costTextField, gbc);
     }
-    protected abstract Media createMedia();
+    protected abstract Media createMedia() throws Exception;
 }

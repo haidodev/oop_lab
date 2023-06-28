@@ -2,21 +2,21 @@ package hust.soict.globalict.aims.media;
 
 
 public class DigitalVideoDisc extends Disc implements Playable {
-    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+    public DigitalVideoDisc(String title, String category, String director, int length, float cost) throws Exception {
         super(title, category, director, length, cost);
     }
-    public DigitalVideoDisc(String title, String category, float cost) {
+    public DigitalVideoDisc(String title, String category, float cost) throws Exception {
         this(title, category, null, 0, cost);
 
     }
 
-    public DigitalVideoDisc(String title) {
+    public DigitalVideoDisc(String title) throws Exception {
         this(title, null, null, 0, 0f);
     }
 
 
 
-    public DigitalVideoDisc(String title, String category, String director, float cost) {
+    public DigitalVideoDisc(String title, String category, String director, float cost) throws Exception {
         this(title, category, director, 0, cost);
 
     }
