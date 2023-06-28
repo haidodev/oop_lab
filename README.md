@@ -15,3 +15,6 @@ This file will description the process of completing the tasks in the Lab 05:
 14. Check all the previous source codes to catch/handle/delegate runtime exceptions "feature/HandleException"
 15. Create a class which inherits from Exception "feature/UserDefinedException"
 16. Update the Aims class "feature/UserDefinedException"
+17. Modify the equals() method of Media class "feature/Equal"
+18. Reading Documents
+19. Update Aims class diagram "AIMS Diagram"
