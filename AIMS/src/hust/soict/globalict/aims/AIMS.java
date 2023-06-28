@@ -1,6 +1,7 @@
 package hust.soict.globalict.aims;
 
 import hust.soict.globalict.aims.cart.Cart;
+import hust.soict.globalict.aims.exception.PlayerException;
 import hust.soict.globalict.aims.interaction.CLI;
 import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
@@ -99,8 +100,20 @@ public class AIMS {
             System.out.println(media + " is not playable.");
             return;
         }
-        if (media instanceof CompactDisc) ((CompactDisc) media).play();
-        if (media instanceof DigitalVideoDisc) ((DigitalVideoDisc) media).play();
+        if (media instanceof CompactDisc) {
+            try {
+                ((CompactDisc) media).play();
+            } catch (PlayerException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (media instanceof DigitalVideoDisc) {
+            try {
+                ((DigitalVideoDisc) media).play();
+            } catch (PlayerException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     }
     private void playMedia(){

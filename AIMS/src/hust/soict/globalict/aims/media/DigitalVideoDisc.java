@@ -1,6 +1,8 @@
 package hust.soict.globalict.aims.media;
 
 
+import hust.soict.globalict.aims.exception.PlayerException;
+
 public class DigitalVideoDisc extends Disc implements Playable {
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) throws Exception {
         super(title, category, director, length, cost);
@@ -20,10 +22,9 @@ public class DigitalVideoDisc extends Disc implements Playable {
         this(title, category, director, 0, cost);
 
     }
-    public void play(){
+    public void play() throws PlayerException {
         if (getLength() < 0){
-            System.out.println("Track " + getTitle() + " cannot be played");
-            return;
+            throw new PlayerException("ERROR: Track length is non-negative!");
         }
         System.out.println("Playing DVD: " + this.getTitle());
         System.out.println("DVD length: " + this.getLength());

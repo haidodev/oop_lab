@@ -13,3 +13,4 @@ This file will description the process of completing the tasks in the Lab 05:
 12. Filter items in cart – FilteredList "feature/FilteredList"
 13. Complete the Aims GUI application "feature/AIMS GUI"
 14. Check all the previous source codes to catch/handle/delegate runtime exceptions "feature/HandleException"
+15. Create a class which inherits from Exception "feature/UserDefinedException"
